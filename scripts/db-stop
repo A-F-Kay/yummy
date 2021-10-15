@@ -1,3 +1,4 @@
 #!/bin/bash
 
-docker stop yummy-db && docker rm yummy-db
+docker stop yummy-db
+docker rm yummy-db
