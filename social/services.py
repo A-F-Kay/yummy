@@ -5,6 +5,7 @@ from sqlalchemy.sql import exists
 from social.models import UserOrm
 from social.serializers import UserModelCreate, BasicResult
 from utils.db import session
+from utils.http_ex import Conflict409
 
 
 def get_user_by_username(username: str) -> UserOrm:
@@ -35,6 +36,18 @@ def create_user_from_form(form: UserModelCreate) -> None:
 
     session.add(new_user)
     session.commit()
+
+
+def get_token(username: str, password: str) -> str:
+    user = get_user_by_username(username)
+    if not user.password == password:
+        raise Conflict409("Incorrect password!")
+
+    return user.username
+
+
+def get_current_user(token: str) -> UserOrm:
+    return get_user_by_username(token)
 
 
 def get_users(*, limit: int = 100, offset: int = 0) -> List[UserOrm]:

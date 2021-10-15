@@ -23,7 +23,20 @@ class UserModelCreate(BaseModel):
         if not p.match(v):
             raise ValueError(f'Please enter valid username!')
 
-        return str(v).upper()
+        return str(v).lower()
+
+
+class CurrentUserModel(BaseModel):
+    id: int
+    username: str
+    name: Optional[str]
+    age: Optional[int]
+    email: str
+    is_admin: Optional[bool]
+
+    class Config:
+        orm_mode = True
+        title = "Me"
 
 
 class UserModel(BaseModel):
@@ -44,3 +57,8 @@ class BasicResult(BaseModel):
 
 class BasicErrResponse(BaseModel):
     detail: BasicResult
+
+
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type = "bearer"
