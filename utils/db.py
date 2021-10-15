@@ -18,6 +18,6 @@ def _get_connection_str():
         print("FATAL: Please provide $YUMMY_DB and $YUMMY_PWD to your env")
         exit(1)
 
-_engine = create_engine(_get_connection_str(), echo=True)
+engine = create_engine(_get_connection_str(), echo=True)
 
-session = sessionmaker(bind=_engine)()
+session = sessionmaker(bind=engine)()

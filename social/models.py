@@ -18,4 +18,4 @@ class UserOrm(Base):
     is_admin = sa.Column(sa.Boolean, default=None)
 
 
-Base.metadata.create_all(db._engine)
+Base.metadata.create_all(db.engine)
