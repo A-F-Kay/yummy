@@ -1,0 +1,60 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=${YUMMY_USER:-postgres}
+      - POSTGRES_PASSWORD=${YUMMY_PWD:-admin}
+      - POSTGRES_DB=${YUMMY_DB}
+      - PGDATA=/data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    # networks:
+      # - postgres
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - db
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=afkay.dev@pm.me
+      - PGADMIN_DEFAULT_PASSWORD=admin
+      - PGADMIN_LISTEN_PORT=5050
+      - PGADMIN_CONFIG_SERVER_MODE=False
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:5050"
+    # networks:
+      # - postgres
+    restart: unless-stopped
+
+  app:
+    depends_on:
+      - db
+    environment:
+      - YUMMY_USER=${YUMMY_USER:-postgres}
+      - YUMMY_DB=${YUMMY_DB}
+      - YUMMY_PWD=${YUMMY_PWD:-admin}
+    build:
+      context: ./app
+    volumes:
+      - ./app:/app
+    # networks:
+      # - postgres
+    ports:
+      - "8000:8000"
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+# networks:
+  # postgres:
+    # driver: host
+
+volumes:
+  postgres:
+  pgadmin:
