@@ -7,8 +7,8 @@ def _get_connection_str():
     try:
         dbname = os.environ['YUMMY_DB']
         pwd = os.environ['YUMMY_PWD']
-        user = 'postgres'
-        host = 'localhost'
+        user = os.environ['YUMMY_USER']
+        host = 'yummy_db_1'
         port = 5432
 
         return f'postgresql://{user}:{pwd}@{host}:{port}/{dbname}'
