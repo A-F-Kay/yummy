@@ -18,6 +18,10 @@ Just my pet project to train&learn some useful&interesting things
     - [x] Configure linters
     - [x] TypeScript
     - [x] Swagger
+    - [ ] React router DOM
+    - [ ] Authotization
+    - [ ] Registration
+    - [ ] User List
     - [ ] Something else
     - [ ] Configure docker service properly
     - [ ] More code!
