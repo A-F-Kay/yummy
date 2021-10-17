@@ -23,7 +23,7 @@ Just my pet project to train&learn some useful&interesting things
     - [ ] More code!
     
 3. [x] Docker Compose:
-    - [ ] backend
-    - [ ] frontend
-    - [ ] postgres
-    - [ ] PgAdmin
+    - [x] backend
+    - [x] frontend
+    - [x] postgres
+    - [x] PgAdmin
