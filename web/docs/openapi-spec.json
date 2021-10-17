@@ -1,0 +1,29 @@
+{
+  "openapi":"3.0.2",
+  "info":{
+    "title":"Yummy API",
+    "version":"0.1.0"
+  },
+  "host":"localhost:8000",
+  "schemes":[
+    "http"
+  ],
+  "basePath":"/",
+  "consumes":[
+    "application/json"
+  ],
+  "produces":[
+    "application/json"
+  ],
+  "securitySchemes": {
+    "OAuth2PasswordBearer": {
+      "type":"oauth2",
+      "flows": {
+        "password": {
+          "scopes": {},
+          "tokenUrl":"/users/token"
+        }
+      }
+    }
+  }
+}
