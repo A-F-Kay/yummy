@@ -1,7 +1,7 @@
 import { EuiButton, EuiConfirmModal, EuiEmptyPrompt, EuiLink, EuiLoadingChart, EuiLoadingLogo, EuiSpacer } from '@elastic/eui';
 import React, { useState } from 'react';
 
-export const Todo = () => {
+export const ComingSoon = () => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const openModal = () => setModalVisible(true);

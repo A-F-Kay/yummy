@@ -1,7 +1,7 @@
 import React from 'react';
 import { EuiHeader, EuiHeaderLink, EuiHeaderLinks, EuiHeaderLogo, EuiHeaderSectionItem } from '@elastic/eui';
 import { Page } from 'components/Page';
-import { Todo } from 'components/Todo';
+import { ComingSoon } from 'components/ComingSoon';
 
 
 const App = () => (
@@ -21,7 +21,7 @@ const App = () => (
       </EuiHeaderSectionItem>
     </EuiHeader>
     <Page>
-      <Todo />
+      <ComingSoon />
     </Page>
   </div>
 );
