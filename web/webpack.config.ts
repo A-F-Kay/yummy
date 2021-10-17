@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import path from 'path';
 import webpack, {Configuration} from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
