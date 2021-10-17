@@ -13,11 +13,9 @@ services:
       - postgres:/data/postgres
     ports:
       - "5432:5432"
-    # networks:
-      # - postgres
     restart: unless-stopped
 
-  pgadmin:
+  pgadmin: ["admin"]
     image: dpage/pgadmin4
     depends_on:
       - db
@@ -30,8 +28,6 @@ services:
       - pgadmin:/var/lib/pgadmin
     ports:
       - "5050:5050"
-    # networks:
-      # - postgres
     restart: unless-stopped
 
   app:
@@ -45,24 +41,19 @@ services:
       context: ./app
     volumes:
       - ./app:/app
-    # networks:
-      # - postgres
     ports:
       - "8000:8000"
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
   web:
+    profiles: ["web"]
     build:
       context: ./web
     volumes:
       - ./web:/web
     ports:
-      - "9000:9000"
+     - "9000:9000"
     command: yarn start:dev
-
-# networks:
-  # postgres:
-    # driver: host
 
 volumes:
   postgres:
