@@ -1,7 +1,11 @@
 import { EuiButton, EuiConfirmModal, EuiEmptyPrompt, EuiLink, EuiLoadingChart, EuiLoadingLogo, EuiSpacer } from '@elastic/eui';
 import React, { useState } from 'react';
 
-export const ComingSoon = () => {
+type Props = {
+  featureName?: string;
+};
+
+export const ComingSoon = ({ featureName }: Props) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const openModal = () => setModalVisible(true);
@@ -10,7 +14,7 @@ export const ComingSoon = () => {
   return (
     <>
       <EuiEmptyPrompt
-        title={<h1>Coming soon</h1>}
+        title={<h1>{featureName && `${featureName} - `}Coming soon</h1>}
         titleSize='l'
         body={
           <div>
