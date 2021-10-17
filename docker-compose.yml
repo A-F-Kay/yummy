@@ -51,6 +51,15 @@ services:
       - "8000:8000"
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
+  web:
+    build:
+      context: ./web
+    volumes:
+      - ./web:/web
+    ports:
+      - "9000:9000"
+    command: yarn start:dev
+
 # networks:
   # postgres:
     # driver: host
