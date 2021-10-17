@@ -17,7 +17,7 @@ Just my pet project to train&learn some useful&interesting things
 2. [x] Frontend:
     - [x] Configure linters
     - [x] TypeScript
-    - [ ] Swagger
+    - [x] Swagger
     - [ ] Something else
     - [ ] Configure docker service properly
     - [ ] More code!
