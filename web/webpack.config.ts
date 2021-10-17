@@ -19,7 +19,8 @@ const webpackConfig = (env): Configuration => ({
   },
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'build.js'
+    filename: 'build.js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -44,6 +45,7 @@ const webpackConfig = (env): Configuration => ({
   devServer: {
     allowedHosts: 'all', // FIXME: not recommended 
     port: 9000,
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({
